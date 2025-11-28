@@ -10,32 +10,30 @@
 
     <!-- Minimal external dependency: Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
     <!-- Open Graph / Meta Preview -->
     <meta property="og:title" content="UKB Ventures">
     <meta property="og:description"
         content="A parent company quietly building future brands across software, retail and digital media. We're early. We're growing.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ukb.digital">
-
-    <!-- Social Share Image (use your favicon or upload a preview banner later) -->
     <meta property="og:image" content="https://ukb.digital/og-banner.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
-    <!-- Recommended Twitter Card (Meta reads this too) -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="UKB Ventures">
     <meta name="twitter:description" content="A seed company for future businesses — software, retail, media and more.">
     <meta name="twitter:image" content="https://ukb.digital/og-banner.png">
 
     <style>
-        /* Core layout */
         :root {
             --bg: #fafafc;
-            --fg: #111111;
+            --fg: #111;
             --muted: #6c6f78;
             --accent: #3a7bff;
         }
@@ -67,7 +65,6 @@
             padding: 32px 16px 64px;
         }
 
-        /* Hero */
         .hero {
             width: 100%;
             max-width: 960px;
@@ -85,7 +82,7 @@
             height: 220px;
             margin-bottom: 40px;
             animation: float 6s ease-in-out infinite;
-            opacity: 0.92;
+            opacity: .92;
         }
 
         @keyframes float {
@@ -105,38 +102,37 @@
         .hero-title {
             font-size: clamp(2.4rem, 4vw, 3.2rem);
             font-weight: 600;
-            letter-spacing: 0.02em;
+            letter-spacing: .02em;
             margin: 0 0 10px;
         }
 
         .hero-subtitle {
-            font-size: 0.98rem;
+            font-size: .98rem;
             color: var(--muted);
             max-width: 320px;
             margin: 0 auto;
         }
 
-        /* Concept blocks */
         .concepts {
             margin-top: 56px;
             width: 100%;
             max-width: 720px;
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
             justify-items: center;
         }
 
         .concept {
-            font-size: 0.9rem;
+            font-size: .9rem;
             color: var(--muted);
             max-width: 200px;
             text-align: center;
         }
 
         .concept-label {
-            font-size: 0.8rem;
-            letter-spacing: 0.16em;
+            font-size: .8rem;
+            letter-spacing: .16em;
             text-transform: uppercase;
             color: var(--fg);
             margin-top: 12px;
@@ -147,28 +143,26 @@
             font-size: 1.4rem;
         }
 
-        /* Paragraph block */
         .about {
             margin-top: 72px;
             max-width: 540px;
             text-align: center;
-            font-size: 0.98rem;
+            font-size: .98rem;
             line-height: 1.7;
             color: var(--muted);
         }
 
-        /* Contact / footer */
         footer {
             text-align: center;
-            padding: 24px 16px 32px;
-            font-size: 0.82rem;
+            padding: 24px 16px 42px;
+            font-size: .82rem;
             color: var(--muted);
         }
 
         .contact-label {
-            letter-spacing: 0.18em;
+            letter-spacing: .18em;
             text-transform: uppercase;
-            font-size: 0.78rem;
+            font-size: .78rem;
             color: #444;
             margin-bottom: 6px;
         }
@@ -176,7 +170,7 @@
         .contact-email a {
             color: var(--fg);
             text-decoration: none;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            border-bottom: 1px solid rgba(0, 0, 0, .12);
             padding-bottom: 1px;
         }
 
@@ -186,11 +180,10 @@
 
         .copy {
             margin-top: 10px;
-            opacity: 0.7;
+            opacity: .7;
         }
 
-        /* Small screens */
-        @media (max-width: 640px) {
+        @media(max-width:640px) {
             .hero {
                 min-height: 65vh;
             }
@@ -213,9 +206,7 @@
 <body>
 
     <main>
-        <!-- HERO -->
-        <section class="hero" aria-labelledby="hero-title">
-            <!-- Abstract nano-banana style orbit (pure SVG, very light) -->
+        <section class="hero">
             <svg class="nano-orbit" viewBox="0 0 260 260" aria-hidden="true">
                 <defs>
                     <linearGradient id="orbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -228,33 +219,21 @@
                         <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
                     </radialGradient>
                 </defs>
-
-                <!-- soft glow -->
                 <circle cx="130" cy="130" r="120" fill="url(#glowGradient)" />
-
-                <!-- orbit rings -->
                 <ellipse cx="130" cy="128" rx="90" ry="46" fill="none" stroke="#c8d3ff" stroke-width="1.4" />
                 <ellipse cx="128" cy="134" rx="60" ry="92" fill="none" stroke="#dde5ff" stroke-width="1.1" />
-
-                <!-- nano banana core -->
-                <path d="M150 70
-               C175 85 185 120 172 148
-               C160 174 134 188 112 180
-               C128 184 152 152 150 132
-               C148 112 132 92 118 86
-               C132 80 144 68 150 70Z" fill="url(#orbGradient)" />
-
-                <!-- tiny satellites -->
+                <path
+                    d="M150 70 C175 85 185 120 172 148 C160 174 134 188 112 180 C128 184 152 152 150 132 C148 112 132 92 118 86 C132 80 144 68 150 70Z"
+                    fill="url(#orbGradient)" />
                 <circle cx="70" cy="110" r="6" fill="#5e8bff" />
                 <circle cx="195" cy="150" r="5" fill="#ffc94a" />
                 <circle cx="118" cy="210" r="4" fill="#5cffc2" />
             </svg>
 
-            <h1 id="hero-title" class="hero-title">UKB Ventures</h1>
+            <h1 class="hero-title">UKB Ventures</h1>
             <p class="hero-subtitle">A parent company quietly preparing future businesses.</p>
 
-            <!-- Concepts -->
-            <div class="concepts" aria-label="Concepts behind UKB Ventures">
+            <div class="concepts">
                 <div class="concept">
                     <div class="concept-emoji">🌱</div>
                     <div class="concept-label">Growth</div>
@@ -272,23 +251,23 @@
                 </div>
             </div>
 
-            <!-- About -->
             <div class="about">
-                UKB Ventures is a quiet parent organisation, based in India, set up to own and
-                operate future companies across software, digital media, retail and experiments
-                that do not have names yet.
+                UKB Ventures is a quiet parent organisation, based in India, set to build companies
+                across software, digital media, retail and new ideas still forming.
             </div>
         </section>
     </main>
 
     <footer>
         <div class="contact-label">Contact</div>
-        <div class="contact-email">
-            <a href="mailto:ceo@ukb.digital">ceo@ukb.digital</a>
+        <div class="contact-email"><a href="mailto:ceo@ukb.digital">ceo@ukb.digital</a></div>
+
+        <!-- 🔥 REQUIRED BY META: Identity must be visible on main page -->
+        <div style="margin-top:22px; font-size:13px; opacity:.8;">
+            Political ads on this domain are funded and published by <strong>Benjith MP</strong>.
+            <a href="disclaimer.html">View Disclaimer</a>
         </div>
-        <a href="disclaimer.html" style="opacity:0.6;font-size:14px;">
-            Political Ad Disclaimer
-        </a>
+
         <div class="copy">© 2025 UKB Ventures</div>
     </footer>
 
