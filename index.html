@@ -3,277 +3,1022 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>UKB Ventures</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UKB — Software Engineering Studio for Apps, Products & Systems</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-        content="UKB Ventures is a quiet parent organisation planning to grow multiple brands across software, retail, digital media and new experiments." />
+        content="UKB is a software engineering company building digital services and products engineered with clarity." />
 
-    <!-- Minimal external dependency: Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://ukb.digital/" />
 
-    <!-- Open Graph / Meta Preview -->
-    <meta property="og:title" content="UKB Ventures">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ukb.digital/" />
+    <meta property="og:title" content="UKB — Software, engineered with clarity." />
     <meta property="og:description"
-        content="A parent company quietly building future brands across software, retail and digital media. We're early. We're growing.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ukb.digital">
-    <meta property="og:image" content="https://ukb.digital/og-banner.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+        content="UKB is a software engineering company building digital services and products engineered with clarity." />
+    <meta property="og:image" content="https://ukb.digital/og-image.png" />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="UKB Ventures">
-    <meta name="twitter:description" content="A seed company for future businesses — software, retail, media and more.">
-    <meta name="twitter:image" content="https://ukb.digital/og-banner.png">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ukb.digital/" />
+    <meta property="twitter:title" content="UKB — Software, engineered with clarity." />
+    <meta property="twitter:description"
+        content="UKB is a software engineering company building digital services and products engineered with clarity." />
+    <meta property="twitter:image" content="https://ukb.digital/og-image.png" />
+
+    <meta name="keywords"
+        content="software engineering, app development, flutter agency, product development studio, web development kerala, warehouse systems, digital products, SaaS development, India software studio">
+
 
     <style>
-        :root {
-            --bg: #fafafc;
-            --fg: #111;
-            --muted: #6c6f78;
-            --accent: #3a7bff;
-        }
+        /* ---------- THEME TOKENS ---------- */
 
-        * {
-            box-sizing: border-box;
+        :root {
+            --radius-lg: 18px;
+            --radius-md: 14px;
+            --radius-pill: 999px;
+            --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.12);
+            --shadow-subtle: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --max-width: 1040px;
+            --transition-fast: 0.18s ease-out;
         }
 
         html,
         body {
             margin: 0;
             padding: 0;
-            background: var(--bg);
-            color: var(--fg);
             font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
         }
 
         body {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            transition: background var(--transition-fast), color var(--transition-fast);
         }
 
-        main {
-            flex: 1;
+        body,
+        .page {
+            background: var(--bg-page);
+            color: var(--text-main);
+        }
+
+        /* LIGHT THEME */
+        [data-theme="light"] {
+            --bg-page: #f7f7f9;
+            --bg-elevated: #ffffff;
+            --bg-soft: #f1f1f5;
+            --text-main: #111111;
+            --text-soft: #6c6f7a;
+            --border-subtle: rgba(0, 0, 0, 0.06);
+            --accent: #111111;
+            --accent-soft: #e3e3ee;
+            --hero-gradient: radial-gradient(circle at top left, #ffffff 0, #f4f4fb 40%, #e3e3f0 100%);
+            --chip-bg: rgba(17, 17, 17, 0.06);
+            --chip-border: rgba(0, 0, 0, 0.08);
+            --shadow-mixed: 0 18px 45px rgba(15, 15, 35, 0.12);
+        }
+
+        /* DARK THEME */
+        [data-theme="dark"] {
+            --bg-page: #050507;
+            --bg-elevated: #111118;
+            --bg-soft: #111119;
+            --text-main: #f6f6fb;
+            --text-soft: #9b9dad;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --accent: #f6f6fb;
+            --accent-soft: #212130;
+            --hero-gradient: radial-gradient(circle at top left, #303045 0, #111118 40%, #050507 100%);
+            --chip-bg: rgba(255, 255, 255, 0.04);
+            --chip-border: rgba(255, 255, 255, 0.12);
+            --shadow-mixed: 0 18px 45px rgba(0, 0, 0, 0.65);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ---------- LAYOUT ---------- */
+
+        .shell {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px 18px 40px;
+        }
+
+        @media (min-width: 900px) {
+            .shell {
+                padding: 28px 24px 56px;
+            }
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-mark {
+            width: 22px;
+            height: 22px;
+            border-radius: 9px;
+            background: conic-gradient(from 180deg, #ffffff, #b5b6c6, #4b4b5d, #ffffff);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        [data-theme="light"] .brand-mark {
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+        }
+
+        .brand-text {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding: 32px 16px 64px;
+            gap: 2px;
         }
+
+        .brand-name {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .brand-tag {
+            font-size: 11px;
+            color: var(--text-soft);
+        }
+
+        .nav-inline {
+            display: none;
+        }
+
+        @media (min-width: 860px) {
+            .nav-inline {
+                display: flex;
+                gap: 20px;
+                font-size: 13px;
+                color: var(--text-soft);
+            }
+
+            .nav-inline a {
+                position: relative;
+                padding: 4px 0;
+            }
+
+            .nav-inline a::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 1px;
+                width: 0;
+                background: var(--accent);
+                transition: width var(--transition-fast);
+                opacity: 0.8;
+            }
+
+            .nav-inline a:hover::after {
+                width: 100%;
+            }
+        }
+
+        .theme-toggle {
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--border-subtle);
+            background: var(--chip-bg);
+            padding: 5px 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            cursor: pointer;
+            color: var(--text-soft);
+        }
+
+        .theme-toggle span {
+            width: 14px;
+            height: 14px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #f5f5ff, #c7c7ff);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        [data-theme="light"] .theme-toggle span {
+            background: radial-gradient(circle at top, #111111, #777777);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.32);
+        }
+
+        /* ---------- MOBILE NAV ---------- */
+
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 100;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--text-main);
+            border-radius: 2px;
+            transition: transform var(--transition-fast), opacity var(--transition-fast);
+        }
+
+        @media (min-width: 860px) {
+            .nav-toggle {
+                display: none;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-page);
+            z-index: 90;
+            padding: 80px 24px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            transform: translateY(-100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu a {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--text-soft);
+        }
+
+        /* ---------- HERO ---------- */
 
         .hero {
-            width: 100%;
-            max-width: 960px;
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
+            margin-top: 20px;
+            border-radius: 26px;
+            background: var(--hero-gradient);
+            color: var(--text-main);
+            box-shadow: var(--shadow-mixed);
+            padding: 22px 18px 22px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr);
+            gap: 20px;
+        }
+
+        @media (min-width: 880px) {
+            .hero {
+                padding: 30px 28px;
+                grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+                align-items: center;
+            }
+        }
+
+        .hero-left {
+            max-width: 560px;
+        }
+
+        .hero-chip {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 32px 16px 24px;
-        }
-
-        .nano-orbit {
-            width: 220px;
-            height: 220px;
-            margin-bottom: 40px;
-            animation: float 6s ease-in-out infinite;
-            opacity: .92;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(4px);
-            }
-
-            50% {
-                transform: translateY(-6px);
-            }
-
-            100% {
-                transform: translateY(4px);
-            }
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--chip-border);
+            background: var(--chip-bg);
+            font-size: 11px;
+            color: var(--text-soft);
+            margin-bottom: 10px;
         }
 
         .hero-title {
-            font-size: clamp(2.4rem, 4vw, 3.2rem);
-            font-weight: 600;
-            letter-spacing: .02em;
+            font-size: clamp(32px, 6vw, 42px);
+            line-height: 1.1;
+            font-weight: 700;
             margin: 0 0 10px;
+            letter-spacing: 0.02em;
         }
 
-        .hero-subtitle {
-            font-size: .98rem;
-            color: var(--muted);
-            max-width: 320px;
-            margin: 0 auto;
+        .hero-sub {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-soft);
+            margin: 0 0 18px;
         }
 
-        .concepts {
-            margin-top: 56px;
-            width: 100%;
-            max-width: 720px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            justify-items: center;
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
         }
 
-        .concept {
-            font-size: .9rem;
-            color: var(--muted);
-            max-width: 200px;
-            text-align: center;
+        .btn-primary,
+        .btn-ghost {
+            font-size: 13px;
+            padding: 9px 18px;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #ffffff;
+            cursor: pointer;
+            transition: transform var(--transition-fast),
+                box-shadow var(--transition-fast),
+                background var(--transition-fast),
+                color var(--transition-fast),
+                border-color var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .concept-label {
-            font-size: .8rem;
-            letter-spacing: .16em;
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        [data-theme="light"] .btn-primary {
+            background: #111111;
+            color: #ffffff;
+            border-color: #111111;
+        }
+
+        [data-theme="dark"] .btn-primary {
+            color: var(--bg-page);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-main);
+            border-color: var(--border-subtle);
+        }
+
+        .btn-ghost:hover {
+            background: var(--chip-bg);
+            transform: translateY(-1px);
+        }
+
+        .hero-note {
+            margin-top: 10px;
+            font-size: 11px;
+            color: var(--text-soft);
+        }
+
+        .hero-visual {
+            border-radius: 22px;
+            background: #111111;
+            color: #ffffff;
+            min-height: 180px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            user-select: none;
+        }
+
+        [data-theme="dark"] .hero-visual {
+            background: #ffffff;
+            color: #111111;
+        }
+
+        /* ---------- SECTIONS GENERIC ---------- */
+
+        .section {
+            margin-top: 34px;
+        }
+
+        .section-head {
+            font-size: 11px;
             text-transform: uppercase;
-            color: var(--fg);
-            margin-top: 12px;
+            letter-spacing: 0.18em;
+            color: var(--text-soft);
             margin-bottom: 6px;
         }
 
-        .concept-emoji {
-            font-size: 1.4rem;
+        .section-title {
+            font-size: 22px;
+            margin: 0 0 16px;
         }
 
-        .about {
-            margin-top: 72px;
-            max-width: 540px;
-            text-align: center;
-            font-size: .98rem;
+        .section-body {
+            font-size: 14px;
+            color: var(--text-soft);
             line-height: 1.7;
-            color: var(--muted);
         }
+
+        /* ---------- DIGITAL SERVICES & PRODUCTS ---------- */
+
+        .cards-2 {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        @media (min-width: 820px) {
+            .cards-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        .card {
+            border-radius: var(--radius-lg);
+            background: var(--bg-elevated);
+            box-shadow: var(--shadow-subtle);
+            padding: 18px 18px 16px;
+            border: 1px solid var(--border-subtle);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-mixed);
+            border-color: var(--accent-soft);
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .pill-sub {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--text-soft);
+            margin-bottom: 10px;
+        }
+
+        .list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            color: var(--text-soft);
+        }
+
+        .list li {
+            margin-bottom: 6px;
+            display: flex;
+            gap: 6px;
+            align-items: flex-start;
+        }
+
+        .bullet {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            margin-top: 6px;
+            opacity: 0.8;
+            flex-shrink: 0;
+        }
+
+        /* ---------- CLARITY & LAB & SPECIAL ---------- */
+
+        .panel {
+            border-radius: var(--radius-lg);
+            padding: 18px 18px 16px;
+            margin-top: 16px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .panel-dark {
+            background: linear-gradient(145deg, #050507, #12121b);
+            color: #f6f6fb;
+            box-shadow: var(--shadow-mixed);
+        }
+
+        .panel-light {
+            background: var(--bg-elevated);
+            color: var(--text-main);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .panel-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .panel-body {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-soft);
+        }
+
+        .panel-dark .panel-body {
+            color: #c4c6d6;
+        }
+
+        .special-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 14px;
+            margin-top: 14px;
+            font-size: 13px;
+            color: var(--text-soft);
+        }
+
+        @media (min-width: 820px) {
+            .special-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        .special-item-title {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        /* ---------- WHO NEEDS US ---------- */
+
+        .who-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 14px;
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-soft);
+        }
+
+        @media (min-width: 820px) {
+            .who-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        .who-card {
+            border-radius: var(--radius-md);
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            padding: 14px 14px 12px;
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .who-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-soft);
+        }
+
+        .who-title {
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        /* ---------- CTA ---------- */
+
+        .cta {
+            margin-top: 34px;
+            border-radius: 24px;
+            padding: 22px 18px 20px;
+            background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08) 0, transparent 45%),
+                var(--bg-soft);
+            border: 1px solid var(--border-subtle);
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .cta-title {
+            font-size: 20px;
+            margin: 0 0 8px;
+        }
+
+        .cta-text {
+            font-size: 14px;
+            color: var(--text-soft);
+            margin: 0 0 16px;
+        }
+
+        /* ---------- FOOTER ---------- */
 
         footer {
+            border-top: 1px solid var(--border-subtle);
+            font-size: 11px;
+            color: var(--text-soft);
+            padding: 12px 18px 22px;
             text-align: center;
-            padding: 24px 16px 42px;
-            font-size: .82rem;
-            color: var(--muted);
+            margin-top: 28px;
         }
 
-        .contact-label {
-            letter-spacing: .18em;
-            text-transform: uppercase;
-            font-size: .78rem;
-            color: #444;
-            margin-bottom: 6px;
+        footer a {
+            text-decoration: underline;
+            text-decoration-thickness: 0.5px;
+            text-underline-offset: 2px;
         }
 
-        .contact-email a {
-            color: var(--fg);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(0, 0, 0, .12);
-            padding-bottom: 1px;
+        footer .subdomains {
+            margin-top: 6px;
+            font-size: 11px;
         }
 
-        .contact-email a:hover {
-            border-bottom-color: var(--accent);
+        .section-body,
+        .panel-body {
+            max-width: 680px;
         }
 
-        .copy {
-            margin-top: 10px;
-            opacity: .7;
+        :target {
+            scroll-margin-top: 80px;
         }
 
-        @media(max-width:640px) {
-            .hero {
-                min-height: 65vh;
+        .hero-visual {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
             }
 
-            .nano-orbit {
-                width: 180px;
-                height: 180px;
-                margin-bottom: 32px;
-            }
-
-            .concepts {
-                grid-template-columns: 1fr;
-                gap: 18px;
-                margin-top: 40px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "UKB",
+  "url": "https://ukb.digital",
+  "logo": "https://ukb.digital/favicon.svg",
+  "description": "Software engineering studio building digital products, apps, systems and tools engineered with clarity.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kerala",
+    "addressCountry": "India"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "ceo@ukb.digital",
+    "contactType": "customer service"
+  }
+}
+</script>
+
 </head>
 
-<body>
+<body class="page">
 
-    <main>
-        <section class="hero">
-            <svg class="nano-orbit" viewBox="0 0 260 260" aria-hidden="true">
-                <defs>
-                    <linearGradient id="orbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#5e8bff" />
-                        <stop offset="50%" stop-color="#ffc94a" />
-                        <stop offset="100%" stop-color="#5cffc2" />
-                    </linearGradient>
-                    <radialGradient id="glowGradient">
-                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
-                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-                    </radialGradient>
-                </defs>
-                <circle cx="130" cy="130" r="120" fill="url(#glowGradient)" />
-                <ellipse cx="130" cy="128" rx="90" ry="46" fill="none" stroke="#c8d3ff" stroke-width="1.4" />
-                <ellipse cx="128" cy="134" rx="60" ry="92" fill="none" stroke="#dde5ff" stroke-width="1.1" />
-                <path
-                    d="M150 70 C175 85 185 120 172 148 C160 174 134 188 112 180 C128 184 152 152 150 132 C148 112 132 92 118 86 C132 80 144 68 150 70Z"
-                    fill="url(#orbGradient)" />
-                <circle cx="70" cy="110" r="6" fill="#5e8bff" />
-                <circle cx="195" cy="150" r="5" fill="#ffc94a" />
-                <circle cx="118" cy="210" r="4" fill="#5cffc2" />
-            </svg>
+    <div class="shell">
 
-            <h1 class="hero-title">UKB Ventures</h1>
-            <p class="hero-subtitle">A parent company quietly preparing future businesses.</p>
-
-            <div class="concepts">
-                <div class="concept">
-                    <div class="concept-emoji">🌱</div>
-                    <div class="concept-label">Growth</div>
-                    <div>Ideas are planted here with patience.</div>
-                </div>
-                <div class="concept">
-                    <div class="concept-emoji">🧠</div>
-                    <div class="concept-label">Thinking</div>
-                    <div>We like to think long before we build.</div>
-                </div>
-                <div class="concept">
-                    <div class="concept-emoji">🚀</div>
-                    <div class="concept-label">Future</div>
-                    <div>Multiple brands will orbit this one name.</div>
+        <!-- HEADER -->
+        <header class="site-header">
+            <div class="brand">
+                <div class="brand-text">
+                    <div class="brand-name">UKB</div>
+                    <div class="brand-tag">Software engineering company</div>
                 </div>
             </div>
 
-            <div class="about">
-                UKB Ventures is a quiet parent organisation, based in India, set to build companies
-                across software, digital media, retail and new ideas still forming.
+            <div style="display:flex;align-items:center;gap:14px;">
+                <nav class="nav-inline">
+                    <a href="#services">Services</a>
+                    <a href="#products">Products</a>
+                    <a href="#clarity">Clarity</a>
+                    <a href="#lab">Lab</a>
+                    <a href="#who">Who needs us</a>
+                </nav>
+                <button type="button" class="theme-toggle" id="themeToggle">
+                    <span></span> <small>Mode</small>
+                </button>
+                <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- MOBILE MENU -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#services">Services</a>
+            <a href="#products">Products</a>
+            <a href="#clarity">Clarity</a>
+            <a href="#lab">Lab</a>
+            <a href="#who">Who needs us</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-left">
+                <div class="hero-chip">
+                    <span>Digital products & engineering studio</span>
+                </div>
+                <h1 class="hero-title">Software, engineered with clarity.</h1>
+                <p class="hero-sub">
+                    UKB builds apps, systems and digital touchpoints for people who like things to be clean, deliberate
+                    and reliable.
+                </p>
+                <div class="hero-actions">
+                    <a href="#products" class="btn-primary">Explore digital products</a>
+                    <a href="#contact" class="btn-ghost">Start a conversation</a>
+                </div>
+                <p class="hero-note">
+                    Quiet execution, long-term thinking, no unnecessary complexity.
+                </p>
+            </div>
+
+            <aside class="hero-visual" aria-hidden="true">
+                UKB
+            </aside>
+        </section>
+
+        <!-- DIGITAL SERVICES -->
+        <section class="section" id="services">
+            <div class="section-head">Digital services</div>
+            <h2 class="section-title">Custom engineering for people who care about how things are built.</h2>
+            <p class="section-body">
+                We work with founders, teams and businesses that need more than a template. From the first commit to the
+                first customer,
+                we help you ship software that feels considered, not rushed.
+            </p>
+
+            <div class="cards-2">
+                <article class="card">
+                    <div class="pill-sub">Core services</div>
+                    <div class="card-title">Web & app development.</div>
+                    <ul class="list">
+                        <li><span class="bullet"></span>Flutter apps for iOS, Android and desktop.</li>
+                        <li><span class="bullet"></span>Web dashboards, admin panels and internal tools.</li>
+                        <li><span class="bullet"></span>E-commerce and on-demand experiences that actually convert.</li>
+                        <li><span class="bullet"></span>Performance, security and deployment baked in from day one.</li>
+                    </ul>
+                </article>
+
+                <article class="card">
+                    <div class="pill-sub">Growth & infrastructure</div>
+                    <div class="card-title">Digital systems around the product.</div>
+                    <ul class="list">
+                        <li><span class="bullet"></span>Lead funnels, campaign landing pages and analytics wiring.</li>
+                        <li><span class="bullet"></span>Integrations with payments, authentication, CRMs and APIs.</li>
+                        <li><span class="bullet"></span>Lightweight automation that removes manual busywork.</li>
+                        <li><span class="bullet"></span>Ad-ready assets and tracking so you know what’s working.</li>
+                    </ul>
+                </article>
             </div>
         </section>
-    </main>
 
-    <footer>
-        <div class="contact-label">Contact</div>
-        <div class="contact-email"><a href="mailto:ceo@ukb.digital">ceo@ukb.digital</a></div>
+        <!-- DIGITAL PRODUCTS -->
+        <section class="section" id="products">
+            <div class="section-head">Digital products</div>
+            <h2 class="section-title">Tools we’re building for ourselves and for others.</h2>
 
-        <!-- 🔥 REQUIRED BY META: Identity must be visible on main page -->
-        <div style="margin-top:6px;font-size:13px;opacity:.85;">
-            This domain <strong>ukb.digital</strong> is owned and operated by <strong>Benjith MP</strong>.
-        </div>
-        <div style="margin-top:2px; font-size:13px; opacity:.8;">
-            Political ads on this domain are funded and published by <strong>Benjith MP</strong>, Malappuram, Kerala.
-            <a href="disclaimer.html">View Disclaimer</a>
-        </div>
+            <div class="cards-2">
+                <article class="card">
+                    <div class="pill-sub">Practical software</div>
+                    <div class="card-title">Warehouse & operations stack.</div>
+                    <ul class="list">
+                        <li><span class="bullet"></span>Warehouse app — live in production, built for real inventory
+                            flows.</li>
+                        <li><span class="bullet"></span>Geo-attendance — private rollout for on-site and field teams.
+                        </li>
+                        <li><span class="bullet"></span>ERP mini — opinionated core features, currently in development.
+                        </li>
+                    </ul>
+                </article>
 
-        <div class="copy">© 2025 UKB Ventures</div>
-    </footer>
+                <article class="card">
+                    <div class="pill-sub">Future-facing</div>
+                    <div class="card-title">Templates that become platforms.</div>
+                    <ul class="list">
+                        <li><span class="bullet"></span>On-demand app kits for services, logistics and retail.</li>
+                        <li><span class="bullet"></span>Lightweight SaaS blueprints that can be customised quickly.</li>
+                        <li><span class="bullet"></span>Internal tools we evolve into standalone products when they’re
+                            ready.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
 
+        <!-- ENGINEERED WITH CLARITY -->
+        <section class="section" id="clarity">
+            <div class="section-head">Engineered with clarity</div>
+            <h2 class="section-title">“Engineered with clarity” is not a tagline. It’s our operating system.</h2>
+
+            <div class="panel panel-dark">
+                <div class="panel-title">What it actually means in practice.</div>
+                <div class="panel-body">
+                    <p>
+                        Clarity is the opposite of chaos. For us, it means that every screen, function and decision
+                        inside a product must
+                        have a reason to exist. We say no to features that add noise, even if they look good in a slide
+                        deck.
+                    </p>
+                    <p>
+                        It also means that the codebase is readable, the architecture is honest and the roadmap is
+                        realistic. We design for
+                        the person who will maintain it one year from now, not just the demo next week.
+                    </p>
+                    <p>
+                        When something is engineered with clarity, it is easier to ship, easier to understand and easier
+                        to grow.
+                        That’s what we optimise for.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAB -->
+        <section class="section" id="lab">
+            <div class="section-head">Our lab</div>
+            <h2 class="section-title">The place where experiments live before they turn into products.</h2>
+
+            <div class="panel panel-light">
+                <div class="panel-title">UKB Lab.</div>
+                <div class="panel-body">
+                    <p>
+                        Not every idea is ready for market. UKB Lab is where we keep the ones that are still growing —
+                        prototypes,
+                        proof-of-concepts and tools that are useful but not yet public.
+                    </p>
+                    <p>
+                        In the lab you’ll find experiments with AI-assisted development, QR-driven operations, invisible
+                        automation and other
+                        small systems that quietly remove friction.
+                    </p>
+                    <p>
+                        Some of these projects will become full products. Some will stay as private advantages for the
+                        people who work with us.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT IS SPECIAL HERE -->
+        <section class="section">
+            <div class="section-head">What is special here</div>
+            <h2 class="section-title">We treat your product like infrastructure, not like content.</h2>
+
+            <div class="special-grid">
+                <div>
+                    <div class="special-item-title">Quiet by design.</div>
+                    <div>We aren’t optimised for noise or vanity metrics. We’re optimised for products that continue
+                        working silently in the background.</div>
+                </div>
+                <div>
+                    <div class="special-item-title">Builders in the room.</div>
+                    <div>You work directly with the people who design and build, not a layer of abstraction that passes
+                        messages around.</div>
+                </div>
+                <div>
+                    <div class="special-item-title">Systems thinking.</div>
+                    <div>Apps, websites, APIs and campaigns are treated as one connected system, not separate checkboxes
+                        on a list.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHO NEEDS US -->
+        <section class="section" id="who">
+            <div class="section-head">Who need us</div>
+            <h2 class="section-title">People who think clearly tend to find their way here.</h2>
+
+            <div class="who-grid">
+                <div class="who-card">
+                    <div class="who-title">Founders with a specific vision.</div>
+                    <div>You know what you want the product to feel like. You just need a team that can translate that
+                        into reality without diluting it.</div>
+                </div>
+                <div class="who-card">
+                    <div class="who-title">Operators who outgrew spreadsheets.</div>
+                    <div>Warehouses, clinics, education, logistics — anyone who hit the ceiling of manual tools and
+                        needs real software instead.</div>
+                </div>
+                <div class="who-card">
+                    <div class="who-title">Teams that value calm, not chaos.</div>
+                    <div>Leaders who prefer stable dashboards to constant fire-fighting, and processes that don’t depend
+                        on one person’s memory.</div>
+                </div>
+                <div class="who-card">
+                    <div class="who-title">Logical thinkers & product people.</div>
+                    <div>If you care about structure, naming, architecture and long-term consequences, we’ll likely
+                        speak the same language.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta" id="contact">
+            <h2 class="cta-title">Start a conversation.</h2>
+            <p class="cta-text">
+                No forms, no funnels. Just send us a context-rich message about what you’re trying to build, fix or grow
+                — and we’ll tell you if we’re the right people to help.
+            </p>
+            <a class="btn-primary" href="mailto:ceo@ukb.digital">Email ceo@ukb.digital</a>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div>UKB © <span id="year"></span> · Kerala, India · <a href="mailto:ceo@ukb.digital">ceo@ukb.digital</a>
+            </div>
+            <div class="subdomains">
+                Ecosystem: <a href="https://apps.ukb.digital">apps.ukb.digital</a> ·
+                <a href="https://lab.ukb.digital">lab.ukb.digital</a> ·
+                <a href="https://api.ukb.digital">api.ukb.digital</a>
+            </div>
+            <div class="subdomains">
+                Political transparency: <a href="disclaimer.html">View disclaimer</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        //default theme
+        const root = document.documentElement;
+        const stored = localStorage.getItem('ukb-theme');
+
+        if (stored) {
+            root.setAttribute('data-theme', stored);
+        } else {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // simple theme toggle with localStorage
+        (function () {
+            const root = document.documentElement;
+            const toggle = document.getElementById('themeToggle');
+            const stored = localStorage.getItem('ukb-theme');
+            if (stored === 'light' || stored === 'dark') {
+                root.setAttribute('data-theme', stored);
+            }
+            toggle.addEventListener('click', () => {
+                const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+                const next = current === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                localStorage.setItem('ukb-theme', next);
+            });
+
+            // Mobile Nav
+            const navToggle = document.getElementById('navToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            navToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Close menu on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>
